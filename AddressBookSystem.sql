@@ -28,4 +28,7 @@ select * from address_book_table where City = 'Chennai' or State = 'TamilNadu'
 select * from address_book_table where City = 'yyyy' or State ='UP'
 -----UC-7 Ability to retrieve count of contacts based on city and statename-----
 select count(*) as NoOfContacts,State,City from address_book_table group by City,State 
-
+-----UC-8 Order By Name based on city name-----
+select * from address_book_table where City = 'Chennai' order by FirstName
+insert into address_book_table(FirstName,LastName,Address,City,State,ZipCode,PhoneNumber,email)values('xxx','yyy','zzz','BPmark','bbb','ccc','99999','eee')
+select * from address_book_table where City = 'BPmark' order by FirstName
