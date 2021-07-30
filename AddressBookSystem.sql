@@ -20,4 +20,7 @@ select * from address_book_table
 update address_book_table set PhoneNumber = '7812453679' where FirstName = 'Uma'
 update address_book_table set PhoneNumber = '7745124574',Address = 'Mall Road' where FirstName = 'Dhanush'
 update address_book_table set email ='amir123@gmail.com' where FirstName = 'Amir'
+-----UC-5 Ability to Delete a person-----
+insert into address_book_table(FirstName,LastName,Address,City,State,ZipCode,PhoneNumber,email)values('xxx','yyy','zzz','aaa','bbb','ccc','99999','eee')
+delete from address_book_table where FirstName = 'xxx'
 
