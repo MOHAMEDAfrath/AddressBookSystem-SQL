@@ -32,3 +32,8 @@ select count(*) as NoOfContacts,State,City from address_book_table group by City
 select * from address_book_table where City = 'Chennai' order by FirstName
 insert into address_book_table(FirstName,LastName,Address,City,State,ZipCode,PhoneNumber,email)values('xxx','yyy','zzz','BPmark','bbb','ccc','99999','eee')
 select * from address_book_table where City = 'BPmark' order by FirstName
+-----UC-9 Alter table to add addressbookname and type column-----
+Alter table address_book_table Add AddressBookName varchar(255),TypeOfAddressBook varchar(255) 
+update address_book_table set AddressBookName = 'Home',TypeOfAddressBook = 'Family' where FirstName = 'Ram' or FirstName = 'Uma'
+update address_book_table set AddressBookName = 'School',TypeOfAddressBook = 'Friends' where FirstName = 'xxx' or FirstName = 'Amir'
+update address_book_table set AddressBookName = 'Manager',TypeOfAddressBook = 'Profession' where FirstName = 'Dhanush'
