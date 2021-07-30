@@ -23,4 +23,6 @@ update address_book_table set email ='amir123@gmail.com' where FirstName = 'Amir
 -----UC-5 Ability to Delete a person-----
 insert into address_book_table(FirstName,LastName,Address,City,State,ZipCode,PhoneNumber,email)values('xxx','yyy','zzz','aaa','bbb','ccc','99999','eee')
 delete from address_book_table where FirstName = 'xxx'
-
+-----UC-6 Ability to Retrieve data based on city or state name-----
+select * from address_book_table where City = 'Chennai' or State = 'TamilNadu'
+select * from address_book_table where City = 'yyyy' or State ='UP'
