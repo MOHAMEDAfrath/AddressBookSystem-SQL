@@ -58,7 +58,7 @@ AddressBookName varchar(255)
 )
 insert into contact_list values('Ram','Kumar','Egmore','Chennai','TamilNadu','600078','9841578941','ram@gmail.com','Home'),
 ('Uma','Devi','Menod','BPmark','UP','ZIP8531','7841526987','umas@gmail.com','Home'),
-('Amir','Khan','Ambattur','Chennai','Tamil Nadu','600660','7744556699','amir@gmail.com','School'),
+('Amir','Khan','Ambattur','Chennai','TamilNadu','600660','7744556699','amir@gmail.com','School'),
 ('Dhanush','Raj','XXXX','yyyy','Banglore','600XXX','4477885599','raj@gmail.com','Manager')
 select * from contact_list
 ---create table address_book_type---
@@ -80,3 +80,18 @@ foreign key(typeId) references address_book_type(TypeId)
 insert into contact_map_type values('1','1'),('2','3'),('3','1'),('1','2'),('4','3')
 insert into contact_map_type values('2','1')
 select * from contact_map_type
+--UC-13--
+-----Ability to Retrieve Person belonging to a City or State from the Address Book-----
+select contact_list.ContactId,contact_list.FirstName,contact_list.LastName,(contact_list.Address+','+contact_list.City+','+contact_list.State+','+contact_list.ZipCode) as address,contact_list.PhoneNumber,contact_list.email,
+contact_list.AddressBookName from contact_list where City = 'yyyy'
+select contact_list.ContactId,contact_list.FirstName,contact_list.LastName,(contact_list.Address+','+contact_list.City+','+contact_list.State+','+contact_list.ZipCode) as address,contact_list.City,contact_list.State,contact_list.ZipCode,contact_list.PhoneNumber,contact_list.email,
+contact_list.AddressBookName from contact_list where State = 'TamilNadu'
+-----Ability to find the no of contacts based on city and state----
+select count(*) as NoOfContacts,state,City from contact_list group by state,city
+-----Ability to sort based on first name------
+select * from contact_list order by FirstName
+-----prints all the data in table-----
+select contact_list.ContactId,contact_list.FirstName,contact_list.LastName,(contact_list.Address+','+contact_list.City+','+contact_list.State+','+contact_list.ZipCode) as address,contact_list.PhoneNumber,contact_list.email,
+contact_list.AddressBookName,address_book_type.AddressBookType from contact_list inner join contact_map_type on contact_list.ContactId = contact_map_type.contactId inner join address_book_type on contact_map_type.typeId = address_book_type.TypeId
+-----Prints the count based on type of address book -----
+select count(*) as noofcontacts,address_book_type.AddressBookType from contact_list inner join contact_map_type on contact_list.ContactId = contact_map_type.contactId inner join address_book_type on contact_map_type.typeId = address_book_type.TypeId group by address_book_type.AddressBookType
